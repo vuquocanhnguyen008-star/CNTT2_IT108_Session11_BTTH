@@ -1,0 +1,102 @@
+(Bài tập tổng hợp) Hồ Sơ Đồ Án Hệ Thống Quản Lý Thư Viện Trường
+## **PHẦN 1: HOÀN THIỆN SRS BẰNG HEADING STYLES VÀ AUTO TOC**
+### **1 & 2. Cấu trúc khung tiêu đề và gán Heading Styles**
+* **Gán `Heading 1`:**
+* `1. Giới thiệu dự án`
+* `2. Chức năng hệ thống`
+* `3. Yêu cầu bảo mật`
+
+* **Gán `Heading 2`:**
+* `1.1. Mục tiêu`
+* `1.2. Đối tượng sử dụng`
+* `2.1. Quản lý mượn sách`
+* `2.2. Quản lý trả sách`
+
+* **Gán `Heading 3`:**
+* `2.1.1. Luồng mượn sách qua thẻ sinh viên`
+
+### **3. Nội dung mô tả ngắn gọn**
+* **Dưới mục `2. Chức năng hệ thống` (2 câu Yêu cầu chức năng):**
+> Hệ thống cho phép thủ thư tra cứu, ghi nhận thông tin mượn/trả sách của sinh viên một cách tự động. Hệ thống tự động cảnh báo và tính phí phạt khi sinh viên trả sách quá hạn.
+
+* **Dưới mục `3. Yêu cầu bảo mật` (2 câu Yêu cầu phi chức năng):**
+> Hệ thống phải xác thực tài khoản đăng nhập của người dùng và phân quyền rõ ràng giữa sinh viên và thủ thư. Toàn bộ dữ liệu mật khẩu và thông tin cá nhân phải được mã hóa an toàn khi lưu trữ.
+
+### **4. Chèn và cập nhật Mục lục tự động (Auto TOC)**
+1. Đặt con trỏ ở đầu tài liệu Word.
+2. Vào thẻ **References** $\rightarrow$ chọn **Table of Contents** $\rightarrow$ chọn mẫu Mục lục tự động.
+3. Thêm một đoạn văn bất kỳ để đẩy mục `3. Yêu cầu bảo mật` sang trang mới.
+4. Nhấp chuột phải vào Mục lục $\rightarrow$ chọn **Update Field** $\rightarrow$ chọn **Update entire table** $\rightarrow$ Nhấn **OK** để cập nhật lại số trang.
+
+## **PHẦN 2: CHUẨN HÓA DỮ LIỆU VÀ AUTOFILTER**
+### **1. 3 lỗi vi phạm 5 Quy tắc Vàng trong Excel**
+| Lỗi | Vị trí (hàng) | Quy tắc bị vi phạm |
+| --- | --- | --- |
+| **1**<br> | Hàng 1 (A1:E1)
+ | Merge ô (Trộn ô tiêu đề)
+ |
+| **2**<br> | Hàng 5
+ | Để hàng trống hoàn toàn trong bảng
+ |
+| **3**<br> | Hàng 6
+ | Chèn dòng Tổng cộng nằm giữa/trong vùng dữ liệu
+ |
+
+### **2. Bảng dữ liệu chuẩn hóa sau khi sửa**
+(Đã bỏ Merge ô, xóa hàng trống 5, và chuyển dòng Tổng cộng ra cuối/ngoài vùng dữ liệu)
+
+| MSSV | Họ Tên | Mã Sách | Ngày Mượn | Tình Trạng |
+| --- | --- | --- | --- | --- |
+| SV001 | Nguyễn Văn An | S001 | 01/10/2026 | Đang mượn |
+| SV002 | Trần Thị Bình | S002 | 03/10/2026 | Quá hạn |
+| SV003 | Lê Văn Cường | S003 | 10/10/2026 | Đã trả |
+| SV004 | Phạm Thu Hà | S099 | 12/10/2026 | Đang mượn |
+
+*(Dòng "Tổng cộng: 4 phiếu" đặt ở hàng riêng bên dưới bảng dữ liệu)*
+
+### **3. Khái niệm Record và Field**
+* **Record (Bản ghi / Dòng):** Là toàn bộ thông tin của 1 đối tượng cụ thể.
+* *Ví dụ:* Dòng `SV001 | Nguyễn Văn An | S001 | 01/10/2026 | Đang mượn`.
+* **Field (Trường dữ liệu / Cột):** Là một thuộc tính, một loại thông tin thống nhất.
+* *Ví dụ:* Cột `MSSV` hoặc cột `Tình Trạng`.
+
+### **4. Thao tác bật AutoFilter và lọc "Quá hạn"**
+1. Chọn một ô bất kỳ trong bảng dữ liệu đã chuẩn hóa.
+2. Bấm tổ hợp phím **`Ctrl` + `Shift` + `L**` để bật bộ lọc.
+3. Bấm vào mũi tên ở cột **Tình Trạng** $\rightarrow$ Bỏ chọn *(Select All)* $\rightarrow$ Tích chọn duy nhất mục **"Quá hạn"** $\rightarrow$ Bấm **OK**.
+
+## **PHẦN 3: NỐI DỮ LIỆU BẰNG VLOOKUP**
+### **1. Công thức VLOOKUP lấy Tên Sách**
+Giả sử cột `Mã Sách` nằm ở cột **C** (từ ô C2), bảng tra cứu nằm ở sheet `DanhMucSach` vùng **A2:C4**:
+=VLOOKUP(C2, DanhMucSach!$A$2:$C$4, 2, FALSE)
+
+### **2. Lỗi đối với Mã Sách S099 (Hàng 8 cũ)**
+* **Lỗi trả về:** `#N/A`.
+* **Nguyên nhân:** Do mã `S099` không tồn tại trong cột đầu tiên của bảng tra cứu ở sheet `DanhMucSach`.
+
+### **3. Công thức bọc IFERROR**
+=IFERROR(VLOOKUP(C2, DanhMucSach!$A$2:$C$4, 2, FALSE), "Không tìm thấy sách")
+
+## **PHẦN 4: SLIDE BÁO CÁO TIẾN ĐỘ**
+### **1. Thiết kế nội dung cho 1 Slide**
+* **Assertion Title (Tiêu đề kết luận):**
+  > *"Dữ liệu mượn sách Tháng 10 đã được chuẩn hóa 100% và phát hiện 1 trường hợp mã sách không hợp lệ."*
+* **Content Area (Con số/Kết luận nổi bật):**
+  > **25% phiếu mượn thuộc trạng thái Quá hạn (1/4 phiếu)**
+* **Loại biểu đồ lựa chọn:**
+  * **Chọn biểu đồ:** **Donut Chart** (hoặc Pie Chart).
+  * **Giải thích lý do:** Giúp thể hiện rõ tỷ lệ phần trăm phân bổ các tình trạng mượn sách (*Quá hạn, Đang mượn, Đã trả*) trên tổng số phiếu mượn.
+
+### **2. Áp dụng Rule 10/20/30**
+Rule **10/20/30** quy định: **10 slide** - trình trình bày trong **20 phút** - cỡ chữ tối thiểu **30pt**.
+* **Tỷ lệ Slide:** Slide này là **1 slide** nằm trong tổng số **10 slide** của bài báo cáo ($1/10 = 10\%$).
+* **Thời gian trình bày dự kiến:** Dự kiến dành khoảng **2 phút** cho slide này ($20 \text{ phút} / 10 \text{ slide}$).
+
+## **6. QUY ĐỊNH NỘP BÀI (CHECKLIST)**
+1. **Chuẩn bị 3 file:**
+   * `SRS_ThuVien.docx`
+   * `PhieuMuon_ThuVien.xlsx` (Gồm 2 sheet: `PhieuMuon` và `DanhMucSach`)
+   * `SlideBaoCao.pptx`
+2. **Gom vào 1 thư mục đặt tên chuẩn:**
+   * Ví dụ: `[Lop12A1]_[TinHoc]_[Session10]_[BaiTongHop]`
+3. **Upload thư mục lên Google Drive / GitHub** và gửi đường dẫn (link) lên hệ thống Portal.
