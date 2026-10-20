@@ -91,12 +91,3 @@ Giả sử cột `Mã Sách` nằm ở cột **C** (từ ô C2), bảng tra cứ
 Rule **10/20/30** quy định: **10 slide** - trình trình bày trong **20 phút** - cỡ chữ tối thiểu **30pt**.
 * **Tỷ lệ Slide:** Slide này là **1 slide** nằm trong tổng số **10 slide** của bài báo cáo ($1/10 = 10\%$).
 * **Thời gian trình bày dự kiến:** Dự kiến dành khoảng **2 phút** cho slide này ($20 \text{ phút} / 10 \text{ slide}$).
-
-## **6. QUY ĐỊNH NỘP BÀI (CHECKLIST)**
-1. **Chuẩn bị 3 file:**
-   * `SRS_ThuVien.docx`
-   * `PhieuMuon_ThuVien.xlsx` (Gồm 2 sheet: `PhieuMuon` và `DanhMucSach`)
-   * `SlideBaoCao.pptx`
-2. **Gom vào 1 thư mục đặt tên chuẩn:**
-   * Ví dụ: `[Lop12A1]_[TinHoc]_[Session10]_[BaiTongHop]`
-3. **Upload thư mục lên Google Drive / GitHub** và gửi đường dẫn (link) lên hệ thống Portal.
